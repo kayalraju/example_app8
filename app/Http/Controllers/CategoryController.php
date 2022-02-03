@@ -12,7 +12,7 @@ class CategoryController extends Controller
 
      public function AddCat(Request $request){
 
-     	//dd($request->all());
+     	dd($request->all());
      	$validatedData = $request->validate([
             'category_name' => 'required|unique:categories|max:255',
             
