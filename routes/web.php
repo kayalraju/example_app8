@@ -31,6 +31,12 @@ Route::get('/about',function(){
  	return view('about');
  });
 
+ Route::get('/hello',function(){
+     echo "hello world";
+ });
+
+
+
 Route::get('/contact-hello-page',[ContactController::class,'hi'])->name('con');
 
 // Route::get('/pro',[ProductController::class,'product'])->name('pro')->middleware('Age');
