@@ -95,11 +95,11 @@
 
    <!-- Trash Part -->
 
-<!-- <div class="container">
+<div class="container">
 	<div class="row">
 		<div class="col-md-8">
 			<div class="card">
-			<div class="card-header">Trash List </div>
+			<div class="card-header">Trash List or Soft Delete Data </div>
 			<table class="table">
 				<thead>
 					<tr>
@@ -112,21 +112,32 @@
 				</thead>
 			<tbody>
 				
+  <!-- @php($i = 1) -->
+        @foreach($trachCat as $category) 
+    <tr>
+      <th scope="row"> {{ $categories->firstItem()+$loop->index  }} </th>
+      <td> {{ $category->category_name }} </td>
+      <td> {{ $category->user->name }} </td> 
+      <td> 
+          @if($category->created_at ==  NULL)
+          <span class="text-danger"> No Date Set</span> 
+          @else
+      {{ Carbon\Carbon::parse($category->created_at)->diffForHumans() }}
+          @endif
+       </td>
+       <td> 
+       <a href="{{ url('category/restore/'.$category->id) }}" class="btn btn-info">Restore</a>
+       <a href="{{ url('pdelete/category/'.$category->id) }}" class="btn btn-danger">P Delete</a>
+        </td> 
 
-				<tr>
-					<th scope="row">hjh </th>
-					<td> jhgj </td>
-					<td> jih </td> 
-					<td> 
 
-					</td>
-					<td> 
-						<a href="" class="btn btn-info">Restore</a>
-						<a href="" class="btn btn-danger">P Delete</a>
-					</td> 
-				</tr> 
-			</tbody>
-			</table>
+    </tr> 
+    @endforeach
+
+
+  </tbody>
+</table>
+{{ $trachCat->links() }}
 			</div>
 			</div>
 
@@ -138,7 +149,7 @@
 
 
 	</div>
-</div>  -->
+</div> 
 
    <!-- End Trush -->
 
